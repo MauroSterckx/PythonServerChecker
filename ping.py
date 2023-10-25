@@ -10,15 +10,5 @@ def ping(ip):
     else:
         return False
 
-def menu():
-    print("Volgende ip-adressen worden gecheckt:")
-    for element in ips:
-        print(f"+ {element}")
-    while True:
-        newIP = input("Geef nieuw ip")
-
-
-print(ping("localhost"))
-print(ping("localhost69"))
 
 
