@@ -9,6 +9,3 @@ def ping(ip):
         return True
     else:
         return False
-
-
-
