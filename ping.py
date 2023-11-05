@@ -1,7 +1,9 @@
+# ping.py
 import os
 import subprocess
 
 ips = ["localhost", "test123", "localhost"]
+
 
 def ping(ip):
     res = subprocess.call(f"ping -n 1 {ip}", stdout=subprocess.DEVNULL)
