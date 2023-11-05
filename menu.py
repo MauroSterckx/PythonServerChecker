@@ -89,6 +89,7 @@ def menu():
     print("[1] Check ip-adressen")
     print("[2] Voeg ip-adres toe")
     print("[3] Verwijder ip-adres")
+    print("[4] Check ip-adressen (ping)")
     keuze = input("Keuze > ")
     if keuze == "1":
         listServers()
@@ -96,6 +97,8 @@ def menu():
         addServer()
     elif keuze == "3":
         removeServer()
+    elif keuze == "4":
+        checkServers()
     else:
         print("Geen geldige keuze")
         menu()
