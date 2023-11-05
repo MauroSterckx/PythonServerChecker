@@ -2,7 +2,20 @@ import json
 
 
 def menu():
-    ...
+    print("Welkom, kies uit de volgende opties:")
+    print("[1] Check ip-adressen")
+    print("[2] Voeg ip-adres toe")
+    print("[3] Verwijder ip-adres")
+
+
+def listServers():
+    with open("ips.json", "r") as f:
+        data = json.load(f)
+        ip_data = data["ips"]
+        print("Volgende ip-adressen worden gecheckt:")
+        for element in ip_data:
+            print(f"+ {element}")
+        print("\n\n")
 
 
 def addServer():
@@ -37,6 +50,7 @@ def removeServer():
     while True:
         print("type 'stop' om te stoppen met ip's te verwijderen")
         remIp = input("Geef index van ip > ")
-
-
-removeServer()
+        if remIp != "stop":
+            ip_data.pop(int(remIp))
+        else:
+            pass
