@@ -1,4 +1,5 @@
 import json
+import sys
 
 
 def listServers():
@@ -31,6 +32,15 @@ def addServer():
             break
 
 
+def addServerIP(ip):
+    with open("ips.json", "r") as f:
+        data = json.load(f)
+        ip_data = data["ips"]
+        ip_data.append(ip)
+        with open("ips.json", "w") as f:
+            json.dump({"ips": ip_data}, f, indent=4)
+
+
 def removeServer():
     with open("ips.json", "r") as f:
         data = json.load(f)
@@ -49,6 +59,15 @@ def removeServer():
             pass
 
 
+def removeServerIP(ip):
+    with open("ips.json", "r") as f:
+        data = json.load(f)
+        ip_data = data["ips"]
+        ip_data.remove(ip)
+        with open("ips.json", "w") as f:
+            json.dump({"ips": ip_data}, f, indent=4)
+
+
 def menu():
     print("Welkom, kies uit de volgende opties:")
     print("[1] Check ip-adressen")
@@ -64,3 +83,16 @@ def menu():
     else:
         print("Geen geldige keuze")
         menu()
+
+
+# ....
+
+if len(sys.argv) > 1:
+    if sys.argv[1] == "list":
+        listServers()
+    elif sys.argv[1] == "add":
+        addServerIP(sys.argv[2])
+    elif sys.argv[1] == "remove":
+        removeServerIP()
+    else:
+        print("Geen geldige keuze")
