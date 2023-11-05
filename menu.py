@@ -1,6 +1,9 @@
 import json
 import sys
 
+# ping.py
+from ping import ping
+
 
 def listServers():
     with open("ips.json", "r") as f:
@@ -68,6 +71,19 @@ def removeServerIP(ip):
             json.dump({"ips": ip_data}, f, indent=4)
 
 
+def checkServers():
+    with open("ips.json", "r") as f:
+        data = json.load(f)
+        ip_data = data["ips"]
+        print("Volgende ip-adressen worden gecheckt:")
+        for element in ip_data:
+            # loop door ips
+            print(f"+ {element}")
+            if ping(element) == True:
+                print(f"  - {element} is online")
+        print("\n\n")
+
+
 def menu():
     print("Welkom, kies uit de volgende opties:")
     print("[1] Check ip-adressen")
@@ -94,5 +110,7 @@ if len(sys.argv) > 1:
         addServerIP(sys.argv[2])
     elif sys.argv[1] == "remove":
         removeServerIP()
+    elif sys.argv[1] == "check":
+        checkServers()
     else:
         print("Geen geldige keuze")
