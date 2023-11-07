@@ -3,6 +3,7 @@ import sys
 
 # ping.py
 from ping import ping
+from check import checkServers
 
 
 def listServers():
@@ -69,19 +70,6 @@ def removeServerIP(ip):
         ip_data.remove(ip)
         with open("ips.json", "w") as f:
             json.dump({"ips": ip_data}, f, indent=4)
-
-
-def checkServers():
-    with open("ips.json", "r") as f:
-        data = json.load(f)
-        ip_data = data["ips"]
-        print("Volgende ip-adressen worden gecheckt:")
-        for element in ip_data:
-            # loop door ips
-            print(f"+ {element}")
-            if ping(element) == True:
-                print(f"  - {element} is online")
-        print("\n\n")
 
 
 def menu():
