@@ -3,3 +3,4 @@ ips.json
 __*
 /venv/
 output.html
+.vscode/
