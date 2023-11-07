@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ServerChecker</title>
+  </head>
+  <body>
+    <h1>Servers</h1>
+    <ul>
+      {% for item, online in items %}
+      <li><strong>{{ item }}</strong> is {{online}}</li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
