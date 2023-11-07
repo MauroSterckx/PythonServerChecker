@@ -3,7 +3,7 @@ import sys
 
 # ping.py
 from ping import ping
-from check import checkServers
+from check import checkServers, checkServersToHTML
 
 
 def listServers():
@@ -102,6 +102,6 @@ if len(sys.argv) > 1:
     elif sys.argv[1] == "remove":
         removeServerIP()
     elif sys.argv[1] == "check":
-        checkServers()
+        checkServersToHTML()
     else:
         print("Geen geldige keuze")
